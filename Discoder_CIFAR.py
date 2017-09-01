@@ -64,7 +64,9 @@ test_loader = torch.utils.data.DataLoader(
                    ])),
     batch_size=batch_size, shuffle=True)
 
-trainx = torch.from_numpy(train_loader.dataset.train_data).float().permute(0,3,1,2)/255
+trainx = torch.from_numpy(train_loader.dataset.train_data).float()/255
+if(trainx.size(3)==3):
+	trainx = trainx.permute(0,3,1,2)
 trainy = torch.from_numpy(np.array(train_loader.dataset.train_labels))
 trainx.add_(-.5).mul_(2);
 
@@ -73,7 +75,9 @@ trainx_unl2 = trainx.clone()
 nr_batches_train = int(trainx.size(0)/batch_size)
 
 
-testx = torch.from_numpy(test_loader.dataset.test_data).float().permute(0,3,1,2)/255
+testx = torch.from_numpy(test_loader.dataset.test_data).float()/255
+if(testx.size(3)==3):
+	testx = testx.permute(0,3,1,2)
 testy = torch.from_numpy(np.array(test_loader.dataset.test_labels))
 testx.add_(-.5).mul_(2);
 nr_batches_test = int(testx.size(0)/batch_size)
