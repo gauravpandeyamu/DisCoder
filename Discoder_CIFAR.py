@@ -19,7 +19,7 @@ import numpy as np
 from torch.nn.utils import weight_norm
 import scipy.misc
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 # to prevent opencv from initializing CUDA in workers
 #torch.randn(8).cuda()
 #os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -46,7 +46,7 @@ count = 400
 learning_rate = .0003
 batch_size = 100
 unlabeled_weight = 1
-seed = 1
+seed = 837592395390
 torch.manual_seed(seed)
 torch.cuda.manual_seed(seed)
 
